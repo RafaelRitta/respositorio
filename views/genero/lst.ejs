@@ -1,0 +1,28 @@
+
+<%- include('../cabecalho.ejs')%>
+
+    <main class="container">
+        <div class="page-header">
+            <h2>Lista de Gênero</h2>
+            <a href="/genero/add" class="btn btn-success">+ Novo Gênero</a>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%generos.forEach(genero => {%>
+                    <tr>
+                        <td><%=genero.nome%></td>
+                    </tr>
+                    <%})%>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+<%- include('../rodape.ejs')%>
