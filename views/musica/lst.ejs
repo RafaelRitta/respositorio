@@ -23,7 +23,9 @@
                         <td><%=musica.nome%></td>
                         <td><%=musica.artista%></td>
                         <td><%=musica.ano%></td>
-                        <td><%=musica.duracao%></td>                       
+                        <td><%=musica.duracao%></td>
+                        <td><a href="/musica/edt/<%=musica._id%>">Editar</a></td>
+                        <td><a href="/musica/del/<%=musica._id%>">Excluir</a></td>                   
                     </tr>
                     <%})%>
                 </tbody>

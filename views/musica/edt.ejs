@@ -1,0 +1,32 @@
+<%-include('../cabecalho.ejs')%>
+        <h3>Editar Música</h3>
+      <div class="content">
+        <form id="form-instrumento" method="post" autocomplete="off" >
+          <div class="grid">
+            <div>
+              <label for="nome">ID da Música</label>
+              <input id="id" value="<%=musica.id%>" name="id" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="nome">Nome da Música</label>
+              <input id="nome" value="<%=musica.nome%>" name="nome" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="artista">Artista da Música</label>
+              <input id="artista" value="<%=musica.artista%>" name="artista" type="text" placeholder="Ex:Gope" required>
+            </div>
+            <div>
+              <label for="ano">Ano de lançamento da Música</label>
+              <input id="ano" value="<%=musica.ano%>" name="ano" type="number" placeholder="Ex:2000" required>
+            </div>
+            <div>
+              <label for="duracao">Duração da Música</label>
+              <input id="duracao" value="<%=musica.duracao%>" name="duracao" type="text" placeholder="Ex:1:30" required>
+            </div>
+           <div class="field-help">Os campos com * são obrigatórios.</div>
+            <a type="button" class="btn ghost" id="btn-cancelar" href="/musica/lst">Cancelar</a>
+            <button type="submit" class="btn primary">Editar Música</button>
+        </form>
+      </div>
+
+  <%-include('../rodape.ejs')%>

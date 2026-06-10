@@ -18,6 +18,8 @@
                     <%generos.forEach(genero => {%>
                     <tr>
                         <td><%=genero.nome%></td>
+                        <td><a href="/genero/edt/<%=genero._id%>">Editar</a></td>
+                        <td><a href="/genero/del/<%=genero._id%>">Excluir</a></td>
                     </tr>
                     <%})%>
                 </tbody>
