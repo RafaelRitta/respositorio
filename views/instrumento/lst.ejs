@@ -3,8 +3,8 @@
 
     <main class="container">
         <div class="page-header">
-            <h2>Lista de Gênero</h2>
-            <a href="/genero/add" class="btn btn-success">+ Novo Gênero</a>
+            <h2>Lista de Instrumentos</h2>
+            <a href="/instrumento/add" class="btn btn-success">+ Novo Instrumento</a>
         </div>
 
         <div class="table-container">
@@ -12,16 +12,18 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
+                        <th>Tipo</th>
                         <th>Editar</th>
                         <th>Excluir</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <%generos.forEach(genero => {%>
+                    <%instrumento.forEach(instrumento => {%>
                     <tr>
-                        <td><%=genero.nome%></td>
-                        <td><a href="/genero/edt/<%=genero._id%>">Editar</a></td>
-                        <td><a href="/genero/del/<%=genero._id%>">Excluir</a></td>
+                        <td><%=instrumento.nome%></td>
+                        <td><%=instrumento.tipo%></td>
+                        <td><a href="/instrumento/edt/<%=instrumento._id%>">Editar</a></td>
+                        <td><a href="/instrumento/del/<%=instrumento._id%>">Excluir</a></td>
                     </tr>
                     <%})%>
                 </tbody>

@@ -1,6 +1,8 @@
 import express from "express";
 import Genero from './models/Genero.js';
 import Musica from './models/Musica.js';
+import Artista from './models/Artista.js';
+import Instrumento from './models/Instrumento.js';
 
 const app = express();
 const PORT = 3000;
@@ -18,6 +20,7 @@ app.set("views", "./views");
 
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
+import { INSPECT_MAX_BYTES } from "buffer";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.static(__dirname + '/public'))
@@ -115,6 +118,99 @@ app.get('/musica/del/:id', async (req, res) => {
 const musica = await Musica.findByIdAndDelete(req.params.id)
 
 res.redirect("/musica/lst")
+
+})
+
+//Rotas de Artista
+
+app.get("/artista/lst", async (req, res) => {
+  const artista = await Artista.find()
+  res.render("artista/lst", {artista});
+});
+
+app.get("/artista/add",  (req, res) => {
+
+  res.render("artista/add");
+});
+
+app.post("/artista/add", async (req, res) => {
+  const nome = req.body.nome;
+  await Artista.create({nome});
+  res.render("artista/addok");
+});
+
+//Update
+
+app.get('/artista/edt/:id', async (req, res) => {
+
+const artista = await Artista.findById(req.params.id)
+
+res.render("artista/edt", {artista})
+
+})
+
+app.post('/artista/edt/:id', async (req, res) => {
+
+const artista = await Artista.findByIdAndUpdate(req.params.id, req.body)
+
+res.render("artista/edtok")
+
+})
+
+//Excluir
+
+app.get('/artista/del/:id', async (req, res) => {
+
+const artista = await Artista.findByIdAndDelete(req.params.id)
+
+res.redirect("/artista/lst")
+
+})
+
+//Rotas de Instrumento
+
+app.get("/instrumento/lst", async (req, res) => {
+  const instrumento = await Instrumento.find()
+  res.render("instrumento/lst", {instrumento});
+});
+
+app.get("/instrumento/add",  (req, res) => {
+
+  res.render("instrumento/add");
+});
+
+app.post("/instrumento/add", async (req, res) => {
+  const nome = req.body.nome;
+  const tipo = req.body.tipo;
+  await Instrumento.create({nome, tipo});
+  res.render("instrumento/addok");
+});
+
+//Update
+
+app.get('/instrymento/edt/:id', async (req, res) => {
+
+const instrumento = await Instrumento.findById(req.params.id)
+
+res.render("instrumento/edt", {instrumento})
+
+})
+
+app.post('/instrumento/edt/:id', async (req, res) => {
+
+const instrumento = await Instrumento.findByIdAndUpdate(req.params.id, req.body)
+
+res.render("instrumento/edtok")
+
+})
+
+//Excluir
+
+app.get('/instrumento/del/:id', async (req, res) => {
+
+const instrumento = await Instrumento.findByIdAndDelete(req.params.id)
+
+res.redirect("/instrumento/lst")
 
 })
 
