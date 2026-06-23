@@ -36,6 +36,14 @@ app.get("/genero/lst", async (req, res) => {
   res.render("genero/lst", {generos});
 });
 
+app.post('/genero/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const generos = await Genero.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("genero/lst", { generos });
+})
+
 app.get("/genero/add",  (req, res) => {
 
   res.render("genero/add");
@@ -83,6 +91,14 @@ app.get("/musica/lst", async (req, res) => {
   res.render("musica/lst", {musicas});
 });
 
+app.post('/musica/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const musicas = await Musica.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("musica/lst", { musicas });
+})
+
 app.get("/musica/add", (req, res) => {
   res.render("musica/add");
 });
@@ -127,6 +143,14 @@ app.get("/artista/lst", async (req, res) => {
   const artista = await Artista.find()
   res.render("artista/lst", {artista});
 });
+
+app.post('/artista/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const artista = await Artista.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("artista/lst", { artista });
+})
 
 app.get("/artista/add",  (req, res) => {
 
@@ -173,6 +197,14 @@ app.get("/instrumento/lst", async (req, res) => {
   const instrumento = await Instrumento.find()
   res.render("instrumento/lst", {instrumento});
 });
+
+app.post('/instrumento/lst', async (req, res) => {
+  const { pesquisar } = req.body;
+  const instrumento = await Instrumento.find({
+    nome: new RegExp(pesquisar, 'i')
+  });
+  res.render("instrumento/lst", { instrumento });
+})
 
 app.get("/instrumento/add",  (req, res) => {
 
